@@ -17,7 +17,6 @@ export function ClientContact() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
       <section className="relative py-20 px-6 mb-12 overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithFallback
