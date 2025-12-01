@@ -2,12 +2,14 @@ import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Clock, MapPin, Phone, Star, Wine, UtensilsCrossed, Calendar } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { HeroSlider } from "./ui/hero-silider/hero-slider";
 
 interface ClientHomeProps {
   onNavigate: (page: string) => void;
+  isLoggedIn?: boolean;
 }
 
-export function ClientHome({ onNavigate }: ClientHomeProps) {
+export function ClientHome({ onNavigate, isLoggedIn }: ClientHomeProps) {
   const features = [
     {
       icon: UtensilsCrossed,
@@ -30,6 +32,7 @@ export function ClientHome({ onNavigate }: ClientHomeProps) {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[500px] sm:h-[600px] overflow-hidden">
+        <HeroSlider />
         <div className="absolute inset-0">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1722587561829-8a53e1935e20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpdGFsaWFuJTIwcmVzdGF1cmFudCUyMGludGVyaW9yfGVufDF8fHx8MTc2MTk0NjkwNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -38,7 +41,7 @@ export function ClientHome({ onNavigate }: ClientHomeProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#4b2e05]/90 to-[#4b2e05]/60"></div>
         </div>
-        
+
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center space-y-6 px-6 max-w-3xl">
             <div className="inline-block bg-[#c7a17a]/20 backdrop-blur-sm px-6 py-3 rounded-full border border-[#c7a17a]/30">
@@ -78,7 +81,7 @@ export function ClientHome({ onNavigate }: ClientHomeProps) {
               Tradição italiana combinada com excelência no atendimento e ingredientes da mais alta qualidade
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
@@ -105,12 +108,12 @@ export function ClientHome({ onNavigate }: ClientHomeProps) {
             <div className="space-y-6">
               <h2 className="text-[#4b2e05]">Nossa História</h2>
               <p className="text-[#8b6f47] leading-relaxed">
-                Fundado em 1985, o Parma Ristorante nasceu do sonho de trazer a verdadeira culinária italiana 
-                para nosso país. Com receitas tradicionais passadas de geração em geração, nossos chefs preparam 
+                Fundado em 1985, o Parma Ristorante nasceu do sonho de trazer a verdadeira culinária italiana
+                para nosso país. Com receitas tradicionais passadas de geração em geração, nossos chefs preparam
                 cada prato com dedicação e amor pela gastronomia.
               </p>
               <p className="text-[#8b6f47] leading-relaxed">
-                Utilizamos apenas ingredientes frescos e selecionados, muitos importados diretamente da Itália, 
+                Utilizamos apenas ingredientes frescos e selecionados, muitos importados diretamente da Itália,
                 para garantir a autenticidade e qualidade que nossos clientes merecem.
               </p>
               <div className="flex gap-4 pt-4">
@@ -124,14 +127,16 @@ export function ClientHome({ onNavigate }: ClientHomeProps) {
                 <span className="text-[#8b6f47]">Mais de 10.000 clientes satisfeitos</span>
               </div>
             </div>
-            
-            <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+
+            <div className="group relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1516750548995-3db798a6f427?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpdGFsaWFuJTIwZm9vZCUyMHRhYmxlfGVufDF8fHx8MTc2MjA0NDk0NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="Italian food"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-120"
               />
             </div>
+
+
           </div>
         </div>
       </section>

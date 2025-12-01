@@ -36,7 +36,7 @@ export function Navigation({ currentPage, onNavigate, onSwitchToClient }: Naviga
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg transition-all ${
+                  className={`cursor-pointer flex items-center gap-2 px-5 py-2.5 rounded-lg transition-all ${
                     isActive
                       ? "bg-[#c7a17a] text-white shadow-md"
                       : "text-[#e6d4c1] hover:bg-[#5d3a0a] hover:text-[#c7a17a]"

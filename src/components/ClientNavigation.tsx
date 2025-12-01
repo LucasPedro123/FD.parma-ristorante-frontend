@@ -1,13 +1,16 @@
 import { Wine, Home, UtensilsCrossed, Calendar, Phone } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router";
+import { Dashboard } from "./Dashboard";
 
 interface ClientNavigationProps {
   currentPage: string;
   onNavigate: (page: string) => void;
   onSwitchToAdmin: () => void;
+  isLoggedIn?: boolean;
 }
 
-export function ClientNavigation({ currentPage, onNavigate, onSwitchToAdmin }: ClientNavigationProps) {
+export function ClientNavigation({ currentPage, onNavigate, onSwitchToAdmin, isLoggedIn }: ClientNavigationProps) {
   const navItems = [
     { id: "home", label: "Início", icon: Home },
     { id: "menu", label: "Cardápio", icon: UtensilsCrossed },
@@ -35,7 +38,7 @@ export function ClientNavigation({ currentPage, onNavigate, onSwitchToAdmin }: C
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 rounded-lg transition-all ${
+                  className={`cursor-pointer flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 rounded-lg transition-all ${
                     isActive
                       ? "bg-[#c7a17a] text-white shadow-md"
                       : "text-[#e6d4c1] hover:bg-[#5d3a0a] hover:text-[#c7a17a]"
@@ -46,13 +49,15 @@ export function ClientNavigation({ currentPage, onNavigate, onSwitchToAdmin }: C
                 </button>
               );
             })}
-            <Button
-              onClick={onSwitchToAdmin}
-              variant="outline"
-              className="ml-2 sm:ml-4 border-[#c7a17a] text-[#c7a17a] hover:bg-[#c7a17a] hover:text-white text-xs sm:text-sm px-2 sm:px-4"
-            >
-              Admin
-            </Button>
+            <Link to={`${isLoggedIn ? '' : "/login"}`}>
+              <Button
+                onClick={onSwitchToAdmin}
+                variant="outline"
+                className="cursor-pointer ml-2 sm:ml-4 border-[#c7a17a] text-[#c7a17a] hover:bg-[#c7a17a] hover:text-white text-xs sm:text-sm px-2 sm:px-4"
+              >
+                {isLoggedIn ? "Meu Perfil" : "Login"}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
