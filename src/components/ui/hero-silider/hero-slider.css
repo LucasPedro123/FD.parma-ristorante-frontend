@@ -88,7 +88,6 @@ main {
 }
 
 .section-subtitle::after {
-    content: url('../../assets/images/separator.svg');
     display: block;
     width: 100px;
     margin-inline: auto;
